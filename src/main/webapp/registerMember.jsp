@@ -8,12 +8,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2>Register New Member</h2>
-    <% if (request.getAttribute("errorMessage") != null) { %>
-    <div class="alert alert-danger">
-        <%= request.getAttribute("errorMessage") %>
-    </div>
-    <% } %>
+
     <form action="member" method="post">
         <input type="hidden" name="action" value="create">
 

@@ -18,8 +18,8 @@ public class Member extends User {
         this.sportPracticed = sportPracticed;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public java.sql.Date getDateOfBirth() {
+        return (java.sql.Date) dateOfBirth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
