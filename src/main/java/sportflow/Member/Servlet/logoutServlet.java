@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/logout")
+
 public class logoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -17,10 +18,9 @@ public class logoutServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false); // Get session if exists
         if (session != null) {
-            session.invalidate(); // Destroy session
+            session.invalidate();
         }
 
-        // Redirect to login page after logout
         response.sendRedirect("login.jsp");
     }
 }

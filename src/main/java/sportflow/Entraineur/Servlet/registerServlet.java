@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 @WebServlet("/entraineur")
-public class EntraineurServlet extends HttpServlet {
+public class registerServlet extends HttpServlet {
     private EntraineurDAO entraineurDAO;
 
     @Override

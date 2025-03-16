@@ -1,5 +1,7 @@
 package sportflow.Member.DAO;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import sportflow.Member.Model.Member;
 
 public class MemberDAO {
@@ -64,4 +66,35 @@ public class MemberDAO {
         }
 
         return null;
-}}
+}
+    public List<Member> getAllMembers() {
+        List<Member> members = new ArrayList<>();
+        String sql = "SELECT * FROM membres ORDER BY nom, prenom";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                Member member = new Member();
+                member.setId(rs.getInt("id"));
+                member.setName(rs.getString("nom"));
+                member.setEmail(rs.getString("email"));
+                members.add(member);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return members;
+    }
+
+    public boolean deleteMember(int id) {
+        String sql = "DELETE FROM membres WHERE id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+}
