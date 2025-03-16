@@ -54,7 +54,14 @@ public class loginServlet extends HttpServlet {
         }
 
         // Check for admin login
-
+        if ("karroumsalmane@gmail.com".equals(email) && "Root@123".equals(password)) {
+            session.setAttribute("user", "admin");
+            session.setAttribute("role", "admin");
+            session.setAttribute("isLoggedIn", true);
+            System.out.println("Admin login success");
+            response.sendRedirect("adminAccueil.jsp");
+            return;
+        }
 
         // Based on the selected role, try to authenticate
         if (role == null || role.isEmpty() || "member".equals(role)) {
